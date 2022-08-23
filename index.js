@@ -14,6 +14,9 @@ require("dotenv").config();
       		},
       	},
       };
+      ws.on("open", () => {
+      	ws.send(JSON.stringify(payload));
+      });
       ws.on("message", (data) => {
       	let payload = JSON.parse(data);
       	const { t, event, op, d	} = payload;
@@ -48,9 +51,12 @@ require("dotenv").config();
       					client.getRoster();
       					client.sendPresence({
       						status: status,
-      						onlineType: onlineType
+      						onlineType: onlineType, 
+                                          bIsPlaying: true, 
+                                          ProductName: "Fortnite"
       					})
       				})
+                              client.connect();
       			}
       	}
       });
