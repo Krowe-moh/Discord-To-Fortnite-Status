@@ -57,7 +57,6 @@ require("dotenv").config();
       					})
       				})
                               client.connect();
-      			}
       	}
       });
       const heartbeat = (ms) => {
