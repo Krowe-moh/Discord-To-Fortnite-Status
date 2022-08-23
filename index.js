@@ -47,7 +47,7 @@ require("dotenv").config();
       				client.on('session:started', () => {
       					client.getRoster();
       					client.sendPresence({
-      						status: d.game.state,
+      						status: status,
       						onlineType: onlineType
       					})
       				})
