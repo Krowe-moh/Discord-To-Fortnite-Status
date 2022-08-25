@@ -89,4 +89,4 @@ client.on('presenceUpdate', function(oldPresence, newPresence) {
   })
   xmppclient.connect();
 })
-client.login(process.env.token);
+client.login(process.env.BOT_TOKEN);
