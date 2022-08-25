@@ -19,7 +19,7 @@
 # Something doesn't work here...
 
 # Credits are required? (©)
-Forking this repository and sharing it again without giving credits (T.F.A).
+Forking this repository and sharing it again without giving credits
 
 ### Have Any Questions?  Make Sure To Contact Us
 <a href='https://discord.gg/dub' target="_blank">
