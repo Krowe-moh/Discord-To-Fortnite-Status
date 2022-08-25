@@ -26,4 +26,4 @@ Forking this repository and sharing it again without giving credits to me (T.F.A
     <img alt='Discord' src='https://img.shields.io/badge/Discord-100000?style=social&logo=Discord&logoColor=5865F2&labelColor=000000&color=EAE9E9'/>
 </a>
  
-## • Repository Created by Krowe moh & Rev
+# • Repository Created by Krowe moh & Rev
