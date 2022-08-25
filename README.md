@@ -17,6 +17,7 @@
   "SERVER_ID": "YOUR SERVER ID (that you and the bot is in)"
 ```
 # Something doesn't work here...
+<descriptionhere>
 
 ### Have Any Questions?  Make Sure To Contact Us
 <a href='https://discord.gg/dub' target="_blank">
