@@ -1,5 +1,7 @@
 # Discord To Fortnite Status
 
+A Script That Shows Discord Status On Fortnite.
+
 # How to setup:
 
 ### - Creating a new client and inviting the bot:
@@ -16,8 +18,13 @@
   "DISCORD_ID": "YOUR DISCORD_ID",
   "SERVER_ID": "YOUR SERVER ID (that you and the bot is in)"
 ```
-# Something doesn't work here...
-<descriptionhere>
+### - How To Get A Bearer Token
+1. Click [This Link](https://www.epicgames.com/id/api/redirect?clientId=3446cd72694c4a4485d81b77adbb2141&responseType=code)
+2.Copy The 32 Character Authorization Code That Looks Like This: `11223344556677889911223344556677`
+3. Paste The 32 Character Authorization Code You Copied Into The Console.
+
+### - Authorization Code Says Null
+Use [This Link](http://epicgames.com/id/logout?lang=en-US&redirectUrl=https%3A%2F%2Fwww.epicgames.com%2Fid%2Flogin%3FredirectUrl%3Dhttps%253A%252F%252Fwww.epicgames.com%252Fid%252Fapi%252Fredirect%253FclientId%253D3446cd72694c4a4485d81b77adbb2141%2526responseType%253Dcode)
 
 ### Have Any Questions?  Make Sure To Contact Us
 <a href='https://discord.gg/UK86tJb2Un' target="_blank">
