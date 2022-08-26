@@ -27,8 +27,6 @@ A Script That Shows Discord Status On Fortnite.
 Use [This Link](http://epicgames.com/id/logout?lang=en-US&redirectUrl=https%3A%2F%2Fwww.epicgames.com%2Fid%2Flogin%3FredirectUrl%3Dhttps%253A%252F%252Fwww.epicgames.com%252Fid%252Fapi%252Fredirect%253FclientId%253D3446cd72694c4a4485d81b77adbb2141%2526responseType%253Dcode)
 
 ### Have Any Questions?  Make Sure To Contact Us
-<a href='https://discord.gg/UK86tJb2Un' target="_blank">
-    <img alt='Discord' src='https://img.shields.io/badge/Discord-100000?style=social&logo=Discord&logoColor=5865F2&labelColor=000000&color=EAE9E9'/>
-</a>
+join the [Discord server](https://discord.gg/dub) and we'll help you out!
  
 ### • Repository Created by Krowe moh & Rev
