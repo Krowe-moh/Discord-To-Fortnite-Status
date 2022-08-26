@@ -20,7 +20,7 @@ A Script That Shows Discord Status On Fortnite.
 ```
 ### - How To Get A Bearer Token
 1. Click [This Link](https://www.epicgames.com/id/api/redirect?clientId=3446cd72694c4a4485d81b77adbb2141&responseType=code)
-2.Copy The 32 Character Authorization Code That Looks Like This: `11223344556677889911223344556677`
+2. Copy The 32 Character Authorization Code That Looks Like This: `11223344556677889911223344556677`
 3. Paste The 32 Character Authorization Code You Copied Into The Console.
 
 ### - Authorization Code Says Null
