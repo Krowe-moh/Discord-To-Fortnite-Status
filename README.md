@@ -24,7 +24,7 @@ A script that changes your fortnite player status to your discord status. (doesn
 3. Paste The Code You Copied Into The Console.
 
 
-![preview](https://user-images.githubusercontent.com/27891447/188433562-627c7ba8-cf27-4e77-b44c-4fec84a7bc66.png)
+![preview](https://user-images.githubusercontent.com/27891447/188463209-6820a269-445a-43b7-84da-4ba135511e82.png)
 
 ### - Authorization Code Says Null:
 Use [This Link](http://epicgames.com/id/logout?lang=en-US&redirectUrl=https%3A%2F%2Fwww.epicgames.com%2Fid%2Flogin%3FredirectUrl%3Dhttps%253A%252F%252Fwww.epicgames.com%252Fid%252Fapi%252Fredirect%253FclientId%253D3446cd72694c4a4485d81b77adbb2141%2526responseType%253Dcode)
