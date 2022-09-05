@@ -16,7 +16,8 @@ A Script That Shows Discord Status On Fortnite.
 • 1 - Go to the folder `config`, and then the file `config.json`. Fill or change the values of the variables as you want. Here's the config.json code below, replace.
 ```json
   "DISCORD_ID": "YOUR DISCORD_ID",
-  "SERVER_ID": "YOUR SERVER ID (that you and the bot is in)"
+  "SERVER_ID": "YOUR SERVER ID (that you and the bot is in)",
+  "BOT_TOKEN": "YOUR BOT TOKEN"
 ```
 ### - How To Get A Bearer Token
 1. Click [This Link](https://www.epicgames.com/id/api/redirect?clientId=3446cd72694c4a4485d81b77adbb2141&responseType=code)
