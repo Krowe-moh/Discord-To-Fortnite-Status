@@ -12,7 +12,7 @@ A script that changes your fortnite player status to your discord status. (doesn
 • 5- Go to `OAuth2` section, and then `URL Generator`. Select the scopes `bot` and then scroll down to **Bot Permissions**, select `Administrator` (For all guild permissions). Copy the link that is generated below, open a new browser tab, paste the URL, choose a server where your bot will be in, verify yourself that you are not a robot, and Done!
 
 ### - Setting up your config file:
- Go to the file `config.json`. Fill or change the values of the variables as you want. Here's the config.json code below, replace.
+ Go to the file `.env`. Fill or change the values of the variables as you want. Here's the .env code below, replace.
 ```json
   "DISCORD_ID": "YOUR DISCORD_ID",
   "SERVER_ID": "YOUR SERVER ID (that you and the bot is in)",
