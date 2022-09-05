@@ -1,6 +1,6 @@
 # Discord To Fortnite Status
 
-A script that changes your fortnite player status to your discord status.
+A script that changes your fortnite player status to your discord status. (doesn't work when online on fortnite)
 
 # How to setup:
 
