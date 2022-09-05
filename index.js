@@ -37,7 +37,7 @@ let xmppclient;
 						}
 					}
 					console.log(`Status: ${status}`.blue.bold)
-					// Set status using xmpp
+					 Set status using xmpp
 					xmppclient = XMPP.createClient({
 						jid: access.account_id + "@prod.ol.epicgames.com",
 						transports: {
