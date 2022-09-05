@@ -7,8 +7,8 @@ const myIntents = new IntentsBitField();
 myIntents.add(IntentsBitField.Flags.GuildPresences, IntentsBitField.Flags.Guilds);
 const client = new Client({ intents: myIntents });
 const { deviceGenerate } = require('./functions.js')
-let xmppclient;
 async function main() {
+let xmppclient;
 	try {
 		const access = await deviceGenerate()
 		client.once('ready', () => {
@@ -37,6 +37,7 @@ async function main() {
 						}
 					}
 					console.log(`Status: ${status}`.blue.bold)
+					// Set status using xmpp
 					xmppclient = XMPP.createClient({
 						jid: access.account_id + "@prod.ol.epicgames.com",
 						transports: {
@@ -87,7 +88,9 @@ async function main() {
 					}
 				}
 				console.log(`Status: ${status}`.blue.bold)
+				// Disconnecting xmpp and sending a new one 
 				xmppclient?.disconnect();
+				// Set status using xmpp
 				xmppclient = XMPP.createClient({
 					jid: access.account_id + "@prod.ol.epicgames.com",
 					transports: {
@@ -114,6 +117,7 @@ async function main() {
 			}
 		})
 	} catch (error) {
+		// Error handler
 		console.log(`${error}`.red.bold)
 		process.exit()
 	}
