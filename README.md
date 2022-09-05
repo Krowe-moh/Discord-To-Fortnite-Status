@@ -7,10 +7,9 @@ A script that changes your fortnite player status to your discord status. (doesn
 ### - Creating a new client and inviting the bot:
 • 1- Go to [Discord Developer Portal](https://discord.com/developers) and then go to `Applications`. <br>
 • 2- Create a new application and choose it's name. <br>
-• 3- Put your application's avatar (not important).<br>
-• 4- Go to `Bot` section and turn your application into a bot. <br>
-• 5- Scroll down and enable the three disabled `Privileged Gateaway Intents` intents (`PRESENCE INTENT`, `SERVER MEMBERS INTENT`, and `MESSAGE CONTENT INTENT`).<br>
-• 6- Go to `OAuth2` section, and then `URL Generator`. Select the scopes `bot` and then scroll down to **Bot Permissions**, select `Administrator` (For all guild permissions). Copy the link that is generated below, open a new browser tab, paste the URL, choose a server where your bot will be in, verify yourself that you are not a robot, and Done!
+• 3- Go to `Bot` section and turn your application into a bot. <br>
+• 4- Scroll down and enable the three disabled `Privileged Gateaway Intents` intents (`PRESENCE INTENT`, `SERVER MEMBERS INTENT`, and `MESSAGE CONTENT INTENT`).<br>
+• 5- Go to `OAuth2` section, and then `URL Generator`. Select the scopes `bot` and then scroll down to **Bot Permissions**, select `Administrator` (For all guild permissions). Copy the link that is generated below, open a new browser tab, paste the URL, choose a server where your bot will be in, verify yourself that you are not a robot, and Done!
 
 ### - Setting up your config file:
 • 1 - Go to the file `config.json`. Fill or change the values of the variables as you want. Here's the config.json code below, replace.
