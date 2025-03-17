@@ -1,59 +1,99 @@
 const axios = require("axios");
-const prompt = require('prompt');
-const fs = require('fs');
-const authUrl = 'https://account-public-service-prod.ol.epicgames.com/account/api/oauth/token';
-const deviceAuthUrl = (accountId) => `https://account-public-service-prod.ol.epicgames.com/account/api/public/account/${accountId}/deviceAuth`;
-const authHeader = {
-    'content-type': 'application/x-www-form-urlencoded',
-    'Authorization': 'Basic NTIyOWRjZDNhYzM4NDUyMDhiNDk2NjQ5MDkyZjI1MWI6ZTNiZDJkM2UtYmY4Yy00ODU3LTllN2QtZjNkOTQ3ZDIyMGM3'
+const fs = require("fs").promises;
+const readline = require("readline");
+const chalk = require("chalk");
+const cliProgress = require("cli-progress");
+
+const AUTH_URL = "https://account-public-service-prod.ol.epicgames.com/account/api/oauth/token";
+const DEVICE_AUTH_URL = (accountId) => `https://account-public-service-prod.ol.epicgames.com/account/api/public/account/${accountId}/deviceAuth`;
+const DEVICE_AUTH_FILE = "deviceauth.json";
+
+const getAuthHeaders = () => ({
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Authorization": "Basic M2Y2OWU1NmM3NjQ5NDkyYzhjYzI5ZjFhZjA4YThhMTI6YjUxZWU5Y2IxMjIzNGY1MGE2OWVmYTY3ZWY1MzgxMmU="
+});
+
+const askQuestion = (query) => {
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+    return new Promise(resolve => rl.question(chalk.cyan(query), answer => {
+        rl.close();
+        resolve(answer.trim());
+    }));
 };
 
-module.exports = {
-    async deviceGenerate() {
-        if (!fs.existsSync(`./deviceauth.json`)) {
-            return await this.requestAuthorization();
-        } else {
-            return await this.useStoredAuth();
+const showProgress = async (task, message = "Processing") => {
+    const bar = new cliProgress.SingleBar({ format: `${chalk.blue(message)} | {bar} | {percentage}%` }, cliProgress.Presets.shades_classic);
+    bar.start(100, 0);
+
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 10;
+        bar.update(progress);
+        if (progress >= 100) {
+            clearInterval(interval);
+            bar.stop();
         }
-    },
+    }, 200);
 
-    async requestAuthorization() {
-        prompt.start();
-        const { input: authCode } = await prompt.get([{ name: "input", description: "Authorization Code" }]);
+    const result = await task();
+    clearInterval(interval);
+    bar.stop();
+    return result;
+};
 
-        try {
-            const tokenResponse = await axios.post(authUrl, `grant_type=authorization_code&code=${authCode}`, { headers: authHeader });
-            const accountId = tokenResponse.data.account_id;
-
-            const deviceResponse = await axios.post(deviceAuthUrl(accountId), {}, {
-                headers: { 'Authorization': `Bearer ${tokenResponse.data.access_token}` }
-            });
-
-            const deviceInfo = {
-                secret: deviceResponse.data.secret,
-                deviceId: deviceResponse.data.deviceId,
-                accountId
-            };
-
-            fs.writeFileSync('deviceauth.json', JSON.stringify(deviceInfo));
-            return deviceInfo;
-
-        } catch (error) {
-            throw new Error("Invalid Authorization Code. Please try again.");
-        }
-    },
-
-    async useStoredAuth() {
-        const deviceData = JSON.parse(fs.readFileSync('deviceauth.json'));
-
-        try {
-            const response = await axios.post(authUrl, `grant_type=device_auth&account_id=${deviceData.accountId}&device_id=${deviceData.deviceId}&secret=${deviceData.secret}`, {
-                headers: authHeader
-            });
-            return response.data;
-        } catch (error) {
-            fs.unlinkSync('deviceauth.json');
-            throw new Error("Stored device auth incorrect. Please run the script again.");
-        }
+async function deviceGenerate() {
+    try {
+        await fs.access(DEVICE_AUTH_FILE);
+        console.log(chalk.green("✅ Using stored authentication..."));
+        return await showProgress(useStoredAuth, "Authenticating...");
+    } catch {
+        console.log(chalk.yellow("⚠ No stored authentication found."));
+        return await requestAuthorization();
     }
-};
+}
+
+async function requestAuthorization() {
+    const authCode = await askQuestion("Enter Authorization Code: ");
+
+    try {
+        console.log(chalk.blue("🔄 Requesting access token..."));
+        const { data: tokenData } = await axios.post(AUTH_URL, `grant_type=authorization_code&code=${authCode}`, { headers: getAuthHeaders() });
+
+        console.log(chalk.blue("🔄 Generating device credentials..."));
+        const { data: deviceData } = await axios.post(DEVICE_AUTH_URL(tokenData.account_id), {}, {
+            headers: { "Authorization": `Bearer ${tokenData.access_token}` }
+        });
+
+        const deviceInfo = { secret: deviceData.secret, deviceId: deviceData.deviceId, accountId: tokenData.account_id };
+
+        await fs.writeFile(DEVICE_AUTH_FILE, JSON.stringify(deviceInfo, null, 2));
+        console.log(chalk.green("✅ Device authentication saved successfully."));
+        return deviceInfo;
+
+    } catch (error) {
+        console.log(error.response.data);
+        console.error(chalk.red("❌ Invalid Authorization Code. Please try again."));
+        process.exit(1);
+    }
+}
+
+async function useStoredAuth() {
+    try {
+        const deviceData = JSON.parse(await fs.readFile(DEVICE_AUTH_FILE));
+
+        console.log(chalk.blue("🔄 Refreshing device authentication..."));
+        const { data: authResponse } = await axios.post(AUTH_URL, 
+            `grant_type=device_auth&account_id=${deviceData.accountId}&device_id=${deviceData.deviceId}&secret=${deviceData.secret}`,
+            { headers: getAuthHeaders() }
+        );
+
+        console.log(chalk.green("✅ Authentication successful."));
+        return authResponse;
+    } catch (error) {
+        console.error(chalk.red("❌ Stored authentication is invalid or expired. Re-authentication required."));
+        await fs.unlink(DEVICE_AUTH_FILE);
+        process.exit(1);
+    }
+}
+
+module.exports = { deviceGenerate };
