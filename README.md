@@ -19,7 +19,7 @@ A script that changes your fortnite player status to your discord status. (doesn
   "BOT_TOKEN": "YOUR BOT TOKEN"
 ```
 ### - How To Get A Bearer Token:
-1. Click [This Link](https://www.epicgames.com/id/api/redirect?clientId=5229dcd3ac3845208b496649092f251b&responseType=code)
+1. Click [This Link](https://www.epicgames.com/id/api/redirect?clientId=3f69e56c7649492c8cc29f1af08a8a12&responseType=code)
 2. Copy The 32 Character Authorization Code That Looks Like This: `11223344556677889911223344556677`
 3. Paste The Code You Copied Into The Console.
 
@@ -29,7 +29,7 @@ A script that changes your fortnite player status to your discord status. (doesn
 ### - Authorization Code Responds Null:
 Use [This Link](http://epicgames.com/id/logout?lang=en-US&redirectUrl=https%3A%2F%2Fwww.epicgames.com%2Fid%2Flogin%3FredirectUrl%3Dhttps%253A%252F%252Fwww.epicgames.com%252Fid%252Fapi%252Fredirect%253FclientId%253D5229dcd3ac3845208b496649092f251b%2526responseType%253Dcode)
 
-If It Opens The Epic Games Website After Logging in use [This Link](https://www.epicgames.com/id/api/redirect?clientId=5229dcd3ac3845208b496649092f251b&responseType=code)
+If It Opens The Epic Games Website After Logging in use [This Link](https://www.epicgames.com/id/api/redirect?clientId=3f69e56c7649492c8cc29f1af08a8a12&responseType=code)
 
 
 ![preview](https://user-images.githubusercontent.com/27891447/188433808-3118d444-b285-46da-b1bf-e6f4335fabbe.png)
@@ -38,4 +38,4 @@ If It Opens The Epic Games Website After Logging in use [This Link](https://www.
 ### Have Any Questions?  Make Sure To Contact Us
 join the [Discord server](https://discord.gg/dub) and we'll help you out!
  
-### • Repository Created by Krowe moh & Rev
+### • Repository Created by Krowe moh & Krait
